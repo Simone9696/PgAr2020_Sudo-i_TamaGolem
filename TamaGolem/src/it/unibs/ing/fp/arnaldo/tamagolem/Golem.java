@@ -31,6 +31,8 @@ public class Golem {
 		   rocks.add(i, rock);
 		 
 		
+		   
+		   
 	}
 		
 	}
