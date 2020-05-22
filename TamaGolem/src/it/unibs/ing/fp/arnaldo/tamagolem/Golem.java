@@ -48,6 +48,7 @@ public class Golem {
 	
 	/**calculate life by:
 	 * 
+	 * 
 	 * @return
 	 */
 
