@@ -4,12 +4,22 @@ import java.util.ArrayList;
 
 public class Player {
 	
+
+
 	private static final int MAX_GOLEMS = G;
 	
 	private String name;
 	private boolean defeated = false;
 	private int evocatedGolems = 0;
 	private Golem myGolem;
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public void throwRock() {
 		
