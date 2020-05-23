@@ -16,18 +16,20 @@ public class Equilibrium {
 	public static void newEquilibrium() {
 		
 		for (int i = 0; i < N + 1; i++) { // inizializzo tutta la matrice a 0
-			for (int j = 0; j > N + 1; j++) {
+			for (int j = 0; j < N + 1; j++) {
 				equilibrium[i][j] = 0;
 			}
 		}
 		
 		for (int i = 0; i < N; i++) { // itero saltando ultima riga e colonna che servono per tracciare
-			for (int j = 0; j > N; j++) { // le somme di righe e colonne
+			for (int j = 0; j < N; j++) { // le somme di righe e colonne
 				if (j > i) { // lavoro sul triangolo superiore
 					equilibrium[i][j] = generateRandomWeight(generatePossibleWeights(i, j)); // scelgo un numero casuale tra quelli possibili
 					equilibrium[j][i] = -equilibrium[i][j];
 					setRowSum(i);
 					setColumnSum(j);
+					setRowSum(j);
+					setColumnSum(i);
 				}
 			}
 		}
@@ -71,26 +73,26 @@ public class Equilibrium {
 		matrix[i][j] = k;
 		matrix[j][i] = -k;
 		
-		if (checkColumn(matrix, j) && checkRow(matrix, i)) compilable = true;
+		if (checkColumn(matrix, i, j) && checkRow(matrix, i, j)) compilable = true;
 		
 		return compilable;
 	}
 
-	private static boolean checkRow(int[][] matrix, int i) {
+	private static boolean checkRow(int[][] matrix, int i, int j) {
 		
 		int rowSumTarget = 0;
 		for (int x = 0; x < N; x++) rowSumTarget += matrix[i][x];
 		rowSumTarget = - rowSumTarget;
-		int remainingNumbers = N - 1 - i;
+		int remainingNumbers = N - 1 - j;
 		return checkExistisCombination(remainingNumbers, rowSumTarget);
 		
 	}
 
-	private static boolean checkColumn(int[][] matrix, int j) {
+	private static boolean checkColumn(int[][] matrix, int i, int j) {
 		int columnSumTarget = 0;
 		for (int x = 0; x < N; x++) columnSumTarget += matrix[x][j];
 		columnSumTarget = - columnSumTarget;
-		int remainingNumbers = N - 2 - j;
+		int remainingNumbers = N - 2 - i;
 		return checkExistisCombination(remainingNumbers, columnSumTarget);
 		
 	}
@@ -132,14 +134,28 @@ public class Equilibrium {
 
 	private static int generateRandomWeight(ArrayList<Integer> set) {
 		Random rd = new Random();
-		int ind = rd.nextInt(set.size());
-		return set.get(ind);
+		try {
+			int ind = rd.nextInt(set.size());
+			return set.get(ind);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} return -1;
 		
 	}
 
 	public static int calculateInteraction(ElementRock rockOne, ElementRock rockTwo) {
 		
 		return equilibrium[rockOne.getTypeId()][rockTwo.getTypeId()];
+	}
+
+	public static void print() {
+		for (int i = 0; i < N + 1; i++) { 
+			for (int j = 0; j < N + 1; j++) {
+				System.out.print(equilibrium[i][j] + "\t");
+			} System.out.println();
+		}
+		
 	}
 
 	

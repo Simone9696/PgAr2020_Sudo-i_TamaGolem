@@ -49,6 +49,10 @@ public class Battle {
 		
 		setDisposableRocks();
 		
+		Equilibrium.newEquilibrium();
+		
+		Equilibrium.print();
+		
 		Utility.setPlayer(playerOne);
 		Utility.setPlayer(playerTwo);
 		Golem golemOne = playerOne.evocateGolem();
