@@ -5,8 +5,8 @@ import java.util.Map;
 
 public class Battle {
 	
-	private static Player playerOne = new Player();
-	private static Player playerTwo = new Player();
+	private static Player playerOne;
+	private static Player playerTwo;
 	
 	private static int P = 0;
 	
@@ -55,11 +55,14 @@ public class Battle {
 		
 		Equilibrium.print();
 		
+		playerOne = new Player();
+		playerTwo = new Player();
+		
 		Utility.setPlayer(playerOne);
 		Utility.setPlayer(playerTwo);
 		Golem golemOne = playerOne.evocateGolem();
 		Golem golemTwo = playerTwo.evocateGolem();
-		while (!playerOne.isDefeated() && !playerTwo.isDefeated() && areThereStillRocks()) {
+		while (!playerOne.isDefeated() && !playerTwo.isDefeated()) {
 			
 			while (!golemOne.isDead() && !golemTwo.isDead()) {
 				ElementRock rockOne = golemOne.throwRock(playerOne);

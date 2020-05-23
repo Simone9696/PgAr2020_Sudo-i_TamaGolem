@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Equilibrium {
 	
-	private static final int N = 3;// oppure far scegliere all'utente il numero di elementi (tra 3 e 10)
+	private static final int N = 7;// oppure far scegliere all'utente il numero di elementi (tra 3 e 10)
 	private static final int MAX_WEIGHT = Golem.getMaxLife();
 	
 	public static int getN() {
