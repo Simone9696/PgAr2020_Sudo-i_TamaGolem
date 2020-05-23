@@ -34,7 +34,7 @@ public class Player {
 		
 		Utility.evocateGolemIntro();
 		
-		while (evocatedGolems < MAX_GOLEMS) {
+		if (evocatedGolems < MAX_GOLEMS) {
 			myGolem = new Golem();
 			myGolem.addRocks();
 			evocatedGolems++;

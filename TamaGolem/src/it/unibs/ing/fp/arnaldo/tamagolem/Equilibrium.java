@@ -24,12 +24,18 @@ public class Equilibrium {
 		for (int i = 0; i < N; i++) { // itero saltando ultima riga e colonna che servono per tracciare
 			for (int j = 0; j < N; j++) { // le somme di righe e colonne
 				if (j > i) { // lavoro sul triangolo superiore
-					equilibrium[i][j] = generateRandomWeight(generatePossibleWeights(i, j)); // scelgo un numero casuale tra quelli possibili
-					equilibrium[j][i] = -equilibrium[i][j];
-					setRowSum(i);
-					setColumnSum(j);
-					setRowSum(j);
-					setColumnSum(i);
+					ArrayList<Integer> list = generatePossibleWeights(i, j);
+					if (list.size() != 0) {
+						equilibrium[i][j] = generateRandomWeight(list); // scelgo un numero casuale tra quelli possibili
+						equilibrium[j][i] = -equilibrium[i][j];
+						setRowSum(i);
+						setColumnSum(j);
+						setRowSum(j);
+						setColumnSum(i);
+					} else {
+						newEquilibrium();
+						break;
+					}
 				}
 			}
 		}
@@ -134,13 +140,9 @@ public class Equilibrium {
 
 	private static int generateRandomWeight(ArrayList<Integer> set) {
 		Random rd = new Random();
-		try {
-			int ind = rd.nextInt(set.size());
-			return set.get(ind);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} return -1;
+		
+		int ind = rd.nextInt(set.size());
+		return set.get(ind);
 		
 	}
 
@@ -150,9 +152,28 @@ public class Equilibrium {
 	}
 
 	public static void print() {
-		for (int i = 0; i < N + 1; i++) { 
-			for (int j = 0; j < N + 1; j++) {
-				System.out.print(equilibrium[i][j] + "\t");
+		
+		System.out.print("\t\t");
+		
+		for (int i = 0; i < N; i++) { 
+			System.out.print(Elements.getElement(i).toString() + (Elements.getElement(i).toString().length() > 7 ? "\t" : "\t|\t"));
+		} System.out.println();
+		
+		for (int k = 0; k < N + 1; k++) { 
+			System.out.print("---------------");
+		} System.out.println();
+		
+		for (int i = 0; i < N; i++) { // N + 1 stampa anche le somme delle colonne
+			if (i != N) {
+				System.out.print(Elements.getElement(i).toString() + (Elements.getElement(i).toString().length() > 7 ? "\t" : "\t\t"));
+			} else {
+				System.out.print("\t\t");
+			}
+			for (int j = 0; j < N; j++) { // N + 1 stampa anche le somme di riga
+				System.out.print(equilibrium[i][j] + "\t|\t");
+			} System.out.println();
+			for (int k = 0; k < N + 1; k++) { 
+				System.out.print("---------------");
 			} System.out.println();
 		}
 		
