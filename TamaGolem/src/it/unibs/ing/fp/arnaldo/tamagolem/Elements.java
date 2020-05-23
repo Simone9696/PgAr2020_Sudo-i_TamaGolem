@@ -30,11 +30,13 @@ public enum Elements {
 	}
 	
 	public static String[] getElementsArray() {
-		String[] str = new String[10];
+		String[] str = new String[Equilibrium.getN()];
 		int i = 0;
 		for (Elements elem : Elements.values()) {
-			str[i] = elem.toString();
-			i++;
+			if (i < Equilibrium.getN()) {
+				str[i] = elem.toString();
+				i++;
+			}
 		}
 		return str;
 	}

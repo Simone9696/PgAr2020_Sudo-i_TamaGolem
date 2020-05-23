@@ -13,13 +13,15 @@ public class Battle {
 	private static Map<Elements, Integer> disposableRocks = new HashMap<Elements, Integer>();
 	
 	public static void initializeRockStock() {
-		P = (int) (Math.ceil(2*Player.getMaxGolems()*Golem.getMaxRocks()/Equilibrium.getN()) * Equilibrium.getN());
+		P = (int) (Math.ceil((double) 2*Player.getMaxGolems()*Golem.getMaxRocks()/Equilibrium.getN()) * Equilibrium.getN());
 	}
 	
 	private static void setDisposableRocks() {
 		int rockNumberEachType = P / Equilibrium.getN();
 		for (Elements elem : Elements.values()) {
-			disposableRocks.put(elem, rockNumberEachType);
+			if (elem.getId() < Equilibrium.getN()) {
+				disposableRocks.put(elem, rockNumberEachType);
+			}
 		}
 	}
 	
@@ -68,7 +70,11 @@ public class Battle {
 				} else {
 					golemTwo.setLife(golemTwo.getLife() - result);
 				}
-				Utility.printDemage(result, rockOne, rockTwo);
+				if (golemOne.getLife() != 0 && golemTwo.getLife() != 0) {
+					Utility.printDemage(result, rockOne, rockTwo);
+				} else if (golemOne.getLife() == 0) Utility.golemDead(playerOne);
+				else Utility.golemDead(playerTwo);
+				
 				Utility.printStatus(playerOne, playerTwo);
 			}
 			

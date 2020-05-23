@@ -11,12 +11,14 @@ public class Golem {
 	
 	private static int MAX_ROCKS = 0;
 	
-	private int life = 10;
+	private static final int MAX_LIFE = 5; // cambiare a piacere
+	
+	private int life = MAX_LIFE;
 	
 	private int rockThrown = 0;
 	
 	public static void initializeMaxRocks() {
-		MAX_ROCKS = (int) (Math.ceil((Equilibrium.getN() + 1) / 3) + 1);
+		MAX_ROCKS = (int) (Math.ceil((Equilibrium.getN() + 1) / 3.0) + 1);
 	}
 	
 	public boolean isDead() {
@@ -67,11 +69,19 @@ public class Golem {
 	}
 
 	public void setLife(int life) {
+		
 		this.life = life;
-		if (life <= 0) dead = true;
+		if (life <= 0) {
+			dead = true;
+			this.life = 0;
+		}
 	}
 
 	public static int getMaxRocks() {
 		return MAX_ROCKS;
+	}
+
+	public static int getMaxLife() {
+		return MAX_LIFE;
 	}
 }

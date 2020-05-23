@@ -3,8 +3,8 @@ import java.util.*;
 
 public class Equilibrium {
 	
-	private static final int N = 5;// oppure far scegliere all'utente il numero di elementi (tra 3 e 10)
-	private static final int MAX_WEIGHT = N - 1;
+	private static final int N = 3;// oppure far scegliere all'utente il numero di elementi (tra 3 e 10)
+	private static final int MAX_WEIGHT = Golem.getMaxLife();
 	
 	public static int getN() {
 		return N;
@@ -25,16 +25,15 @@ public class Equilibrium {
 			for (int j = 0; j < N; j++) { // le somme di righe e colonne
 				if (j > i) { // lavoro sul triangolo superiore
 					ArrayList<Integer> list = generatePossibleWeights(i, j);
-					if (list.size() != 0) {
+					try {
 						equilibrium[i][j] = generateRandomWeight(list); // scelgo un numero casuale tra quelli possibili
 						equilibrium[j][i] = -equilibrium[i][j];
 						setRowSum(i);
 						setColumnSum(j);
 						setRowSum(j);
 						setColumnSum(i);
-					} else {
-						newEquilibrium();
-						break;
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			}
@@ -59,7 +58,7 @@ public class Equilibrium {
 		
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		
-		for (int k = - MAX_WEIGHT; k < N; k++) {
+		for (int k = - MAX_WEIGHT; k <= MAX_WEIGHT; k++) {
 			if (k != 0) {
 				if (isMatrixCompilable(k, i, j)) {
 					list.add(k);
@@ -123,7 +122,7 @@ public class Equilibrium {
 		
 		ArrayList<Integer> weights = new ArrayList<Integer>();
 		
-		for (int k = - MAX_WEIGHT; k < N; k++) {
+		for (int k = - MAX_WEIGHT; k <= MAX_WEIGHT; k++) {
 			if (k != 0) {
 				weights.add(k);
 			}

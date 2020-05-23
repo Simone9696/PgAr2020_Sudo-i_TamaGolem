@@ -10,7 +10,7 @@ public class Player {
 	private Golem myGolem;
 	
 	public static void initializeMaxGolems() {
-		MAX_GOLEMS = (int) Math.ceil((Equilibrium.getN() - 1)*(Equilibrium.getN() - 2)/(2 * Golem.getMaxRocks()));
+		MAX_GOLEMS = (int) Math.ceil((double)(Equilibrium.getN() - 1)*(Equilibrium.getN() - 2)/(2 * Golem.getMaxRocks()));
 	}
 	
 	public boolean isDefeated() {
@@ -32,14 +32,16 @@ public class Player {
 
 	public Golem evocateGolem() {
 		
-		Utility.evocateGolemIntro();
 		
-		if (evocatedGolems < MAX_GOLEMS) {
+		evocatedGolems++;
+		
+		if (evocatedGolems <= MAX_GOLEMS) {
+			Utility.evocateGolemIntro();
 			myGolem = new Golem();
 			myGolem.addRocks();
-			evocatedGolems++;
+			
 		}
-		if (evocatedGolems == MAX_GOLEMS) setDefeated(true);
+		if (evocatedGolems > MAX_GOLEMS) setDefeated(true); // da sistemare: non deve far generare il golem e poi dire subito che il giocatore è morto
 		return myGolem;
 		
 	}
