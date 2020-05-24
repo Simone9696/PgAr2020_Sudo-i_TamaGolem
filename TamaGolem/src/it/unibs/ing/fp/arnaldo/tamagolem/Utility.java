@@ -26,6 +26,7 @@ public class Utility {
 	public static void addRocksIntro() { // avvisa utente che sta per scegliere le rocce da dare al golem
 		System.out.println();
 		System.out.println("Scegli le rocce da dare al tuo TamaGolem\n");
+		System.out.println("Devi scegliere " + Golem.getMaxRocks() + " rocce");
 		
 	}
 
@@ -88,6 +89,24 @@ public class Utility {
 	public static void golemDead(Player player) {
 		System.out.println();
 		System.out.println("Il TamaGolem di " + player.getName() + " e' morto\n");
+		
+	}
+
+	public static void tie() {
+		System.out.println();
+		System.out.println("Avete scelto le stesse rocce... la partita finisce in parita' !");
+		
+	}
+
+	public static void turn(Player player) {
+		System.out.println();
+		System.out.println("E' il turno di " + player.getName());
+		
+	}
+
+	public static void push() {
+		System.out.println();
+		InputDati.leggiChar("Premi un tasto per lanciare la prossima roccia\n");
 		
 	}
 

@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Equilibrium {
 	
-	private static final int N = 7;// oppure far scegliere all'utente il numero di elementi (tra 3 e 10)
+	private static final int N = 5;// oppure far scegliere all'utente il numero di elementi (tra 3 e 10)
 	private static final int MAX_WEIGHT = Golem.getMaxLife();
 	
 	public static int getN() {
@@ -13,7 +13,7 @@ public class Equilibrium {
 	private static int equilibrium[][] = new int[N+1][N+1]; // usare elements id come indici
 
 	
-	public static void newEquilibrium() {
+	public static boolean newEquilibrium() {
 		
 		for (int i = 0; i < N + 1; i++) { // inizializzo tutta la matrice a 0
 			for (int j = 0; j < N + 1; j++) {
@@ -32,12 +32,12 @@ public class Equilibrium {
 						setColumnSum(j);
 						setRowSum(j);
 						setColumnSum(i);
-					} catch (Exception e) {
-						e.printStackTrace();
+					} catch (Exception e) { // tasso fallimento circa 1 %
+						return false;
 					}
 				}
 			}
-		}
+		} return true;
 	}
 	
 	private static void setColumnSum(int j) {

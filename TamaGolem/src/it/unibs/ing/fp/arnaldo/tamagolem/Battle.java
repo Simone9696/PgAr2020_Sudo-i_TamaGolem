@@ -51,8 +51,8 @@ public class Battle {
 		
 		setDisposableRocks();
 		
-		Equilibrium.newEquilibrium();
-		
+		while (!Equilibrium.newEquilibrium());
+			
 		Equilibrium.print();
 		
 		playerOne = new Player();
@@ -60,11 +60,20 @@ public class Battle {
 		
 		Utility.setPlayer(playerOne);
 		Utility.setPlayer(playerTwo);
+		Utility.turn(playerOne);
 		Golem golemOne = playerOne.evocateGolem();
+		Utility.turn(playerTwo);
 		Golem golemTwo = playerTwo.evocateGolem();
 		while (!playerOne.isDefeated() && !playerTwo.isDefeated()) {
 			
+			if (golemOne.rocks.equals(golemTwo.rocks)) {
+				Utility.tie();
+				return;
+			}
+			
 			while (!golemOne.isDead() && !golemTwo.isDead()) {
+
+				Utility.push();
 				ElementRock rockOne = golemOne.throwRock(playerOne);
 				ElementRock rockTwo = golemTwo.throwRock(playerTwo);
 				int result = Equilibrium.calculateInteraction(rockOne, rockTwo);
@@ -79,11 +88,14 @@ public class Battle {
 				else Utility.golemDead(playerTwo);
 				
 				Utility.printStatus(playerOne, playerTwo);
+				
 			}
 			
 			if (golemOne.isDead()) { // sono sicuro che non muoiono mai contemporaneamente
+				Utility.turn(playerOne);
 				golemOne = playerOne.evocateGolem();
 			} else {
+				Utility.turn(playerTwo);
 				golemTwo = playerTwo.evocateGolem();
 			}
 		}
