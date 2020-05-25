@@ -1,13 +1,20 @@
 package it.unibs.ing.fp.arnaldo.tamagolem;
 
+import it.unibs.fp.mylib.EstrazioniCasuali;
 import it.unibs.fp.mylib.InputDati;
 import it.unibs.fp.mylib.MyMenu;
 
+
 public class Utility {
 
+	public static final boolean elementForBeginner = false;
+	private static int N;
+	
+	
 	public static ElementRock chooseRock() {
 		System.out.println("Scegli una roccia fra quelle disponibili.\n");
 		Battle.printDisposableRocks();
+		
 		String voci[] = Elements.getElementsArray();
 		MyMenu menu = new MyMenu("Digita il numero corrispondente alla roccia da scegliere", voci);
 		int chosen = -1;
@@ -109,6 +116,46 @@ public class Utility {
 		InputDati.leggiChar("Premi un tasto per lanciare la prossima roccia\n");
 		
 	}
+    public static int setNforBeginners() {
+    	return 3;
+    	
+    }
+    
+    public static int  elementForBeginner() {
+    return 3;
 
+    	}
+    public static void setElementAdvance() 
+  {     
+    	    N = 0;
+            final String[] LEVEL = { "ENTRY", "MEDIUM", "ADVANCE","UNGODLY" };
+    		MyMenu sottomenu = new MyMenu("quante forze pensi di poter gestire?",LEVEL);
+    		int scelta = sottomenu.scegli();
+    		switch (scelta) {
+    		case 0:
+    			InputDati.yesOrNo("per tornare indietro devi ammettere di aver paura,hai paura?");
+    			return ;
+    		case 1:
+    			System.out.println("equilibrio di elementi controllabili da matricole");
+    			N = EstrazioniCasuali.estraiIntero(4, 5);
+    			break;
+			case 2:
+    			System.out.println("interazione tra forze miti e ditruttive non banale ");
+    			N = EstrazioniCasuali.estraiIntero(6, 7);
+    			break;
+    		case 3:
+    			System.out.println("potere srigionato gestibile solo da utenti avanzati Avanzati ");
+    			N = EstrazioniCasuali.estraiIntero(8,9);
+    			break;
+    		case 4:
+    			System.out.println("ATTENZIONE ONLY MASTER");
+    			System.out.println("numero troppo elevato di forze in gioco pericolo");
+    			N =10;
+    			break;
+    		}
+    	}
+    
+    	
+    
 	// interazione con utente
 }

@@ -3,13 +3,20 @@ import java.util.*;
 
 public class Equilibrium {
 	
-	private static final int N = 5;// oppure far scegliere all'utente il numero di elementi (tra 3 e 10)
+	private static  int N = setN();// oppure far scegliere all'utente il numero di elementi (tra 3 e 10)
 	private static final int MAX_WEIGHT = Golem.getMaxLife();
 	
 	public static int getN() {
-		return N;
+		return Utility.setNforBeginners();
 	}
-
+    
+   public static int setN() {
+	   Utility.setNforBeginners();
+	   return N;
+	   
+    }
+	
+	
 	private static int equilibrium[][] = new int[N+1][N+1]; // usare elements id come indici
 
 	
