@@ -8,7 +8,20 @@ public class Player {
 	private boolean defeated = false;
 	private int evocatedGolems = 0;
 	private Golem myGolem;
+	private char ensign;
 	
+	public Player(String name, Golem myGolem, char ensign) {
+		
+		setName(name);
+		myGolem= evocateGolem();
+		setEnsign(ensign);
+	}
+   public Player(String name, char ensign) {
+		
+		setName(name);
+		setEnsign(ensign);
+	}
+
 	public static void initializeMaxGolems() {
 		MAX_GOLEMS = (int) Math.ceil((double)(Equilibrium.getN() - 1)*(Equilibrium.getN() - 2)/(2 * Golem.getMaxRocks()));
 	}
@@ -46,6 +59,12 @@ public class Player {
 		
 	}
 
+	@Override
+	public String toString() {
+		return "Player [name=" + name + ", defeated=" + defeated + ", evocatedGolems=" + evocatedGolems + ", myGolem="
+				+ myGolem + ", ensign=" + ensign + "]";
+	}
+
 	public static int getMaxGolems() {
 		return MAX_GOLEMS;
 	}
@@ -57,8 +76,11 @@ public class Player {
 	public void setMyGolem(Golem myGolem) {
 		this.myGolem = myGolem;
 	}
-	
-	
-	
 
+	
+	
+	public void setEnsign(char ensign) {
+		ensign=' ';
+	}
+	
 }

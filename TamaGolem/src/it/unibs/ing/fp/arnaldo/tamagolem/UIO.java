@@ -6,7 +6,7 @@ public class UIO {
 	
 	private final static String frame = "********************************************************";
 	private final static String MESS_GOODBYE = "\n ARRIVEDERCI \n  ";
-	private final static String MESS_WELCOME = "        SEI ENTRATO NELLA ARENA \n      + comprenderai \n  l'equilibrio delle forze dell universo";
+	private final static String MESS_WELCOME = "            SEI ENTRATO NELLA ARENA  \n       terreno di scontro dei TAMAGOLEM  \n   sarai abbastanza scaltro da comprendere \n   l'equilibrio delle forze che governano l'universo?";
 
 
 	
@@ -18,9 +18,9 @@ public class UIO {
 	public static void golemIntro() {
 		
 		printWelcome();
-		System.out.println("come primo clandestino ti è concesso di scegliere il livello della sfida");
+		System.out.println("come primo sfindante clandestino ti è concesso di scegliere il livello della sfida");
 		if (InputDati.yesOrNo("sei un allievo ancora inetto ? rifletti bene prima di rispondere no"))
-        Utility.elementForBeginner();
+        Utility.setNforBeginners();
 		else 
 		Utility.setElementAdvance();
 		System.out.println("");

@@ -55,12 +55,14 @@ public class Battle {
 			
 		Equilibrium.print();
 		
-		playerOne = new Player();
-		playerTwo = new Player();
-		
-		Utility.setPlayer(playerOne);
-		Utility.setPlayer(playerTwo);
+	
+   	    playerOne = Utility.registerPlayer();
+   	    //INSERIRE METODO INTRODUZIONE COMPLETA IN UTILITY
+		playerTwo = Utility.registerPlayer();
+
+
 		Utility.turn(playerOne);
+	
 		Golem golemOne = playerOne.evocateGolem();
 		Utility.turn(playerTwo);
 		Golem golemTwo = playerTwo.evocateGolem();
@@ -111,6 +113,14 @@ public class Battle {
 			Utility.winner(playerOne);
 		}
 		
+	}
+
+	public static Player getPlayerOne() {
+		return playerOne;
+	}
+
+	public static Player getPlayerTwo() {
+		return playerTwo;
 	}
 
 	public static Map<Elements, Integer> getDisposableRocks() {

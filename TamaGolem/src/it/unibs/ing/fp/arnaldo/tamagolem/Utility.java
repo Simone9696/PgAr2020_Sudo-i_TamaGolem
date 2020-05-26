@@ -45,8 +45,11 @@ public class Utility {
 
 	public static void battleIntro() { // avvisa utenti che stanno per iniziare una partita
 		System.out.println();
-		System.out.println("Sta per iniziare una nuova battaglia!\n");
-		
+		System.out.println("FORZE MITI E DISTRUTTIVE SONO IN GIOCO LA BATTAGLIA INCOMBE:\n");
+//		System.out.println("sarete due sfidanti e ... non sarete soli");
+//		System.out.println("finalemnte testerete le abilità dei vostri TAMAGOLEM  ");
+//		System.out.println("presentazioni:");
+//		
 	}
 
 	public static void throwRockIntro(ElementRock elementRock, Player player) { // avvisa utente che sta per lanciare una roccia
@@ -74,11 +77,10 @@ public class Utility {
 
 	public static void setPlayer(Player player) { // fa aggiungere un nome al giocatore
 		System.out.println();
-		player.setName(InputDati.leggiStringa("Inserisci il nome del giocatore: "));
-		
+		player.setName(InputDati.leggiStringa("iserisci Username "));
 	}
 
-	public static void printDemage(int result, ElementRock rockOne, ElementRock rockTwo) {
+	    public static void printDemage(int result, ElementRock rockOne, ElementRock rockTwo) {
 		System.out.println();
 		if (result < 0) {
 			System.out.println(rockTwo.toString() + " infligge " + Math.abs(result) + " danni a " + rockOne.toString());
@@ -155,7 +157,25 @@ public class Utility {
     		}
     	}
     
+    	public static Player registerPlayer() {
+    		String username = InputDati.leggiStringaNonVuota("inserisci username :");
+    		char ensign =InputDati.leggiCharNonVuoto("scegli un carattere per il tuo vessillo");
+    		return new Player(username, ensign);
+    	}
     	
+
+//		public static void introductionPlayer(Player playerOne, Player playerTwo) {
+//			System.out.println("sarete due sfidanti e ... non sarete soli");
+//    		System.out.println("finalemnte testerete le abilità dei vostri TAMAGOLEM  ");
+//    		System.out.println("presentazioni:");
+//    		
+//     	    
+//    		playerOne = registerPlayer();
+//    		System.out.println("bene allievo"+playerOne.getName()+"adesso tocca al tuo sifdante:");
+//    		playerTwo = registerPlayer();
+//    		TO DO DA FARE SPER SPOSTARE TUTTO DI QUI
+			
+//		}
     
 	// interazione con utente
 }
