@@ -7,7 +7,10 @@ public class Golem {
 	
 	private boolean dead = false;
 
-	ArrayList<ElementRock> rocks = new ArrayList<ElementRock>();
+	ArrayList<ElementRock> rocks; 
+	
+	
+	private String nameGolem;
 	
 	private static int MAX_ROCKS = 0;
 	
@@ -17,6 +20,32 @@ public class Golem {
 	
 	private int rockThrown = 0;
 	
+	
+	
+	
+	
+	public Golem() {}
+	
+	
+	
+	public Golem(String nameGolem) {
+	
+		this.nameGolem = nameGolem;
+	}
+
+	
+	public Golem(String nameGolem, ArrayList<ElementRock> rocks, int life) {
+		
+		
+		this.nameGolem = nameGolem;
+		this.rocks  = new ArrayList<ElementRock>();
+		this.life = getMaxLife();
+	}
+
+
+
+	
+
 	public static void initializeMaxRocks() {
 		MAX_ROCKS = (int) (Math.ceil((Equilibrium.getN() + 1) / 3.0) + 1);
 	}

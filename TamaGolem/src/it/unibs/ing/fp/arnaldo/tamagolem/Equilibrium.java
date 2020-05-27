@@ -166,7 +166,7 @@ public class Equilibrium {
 		} System.out.println();
 		
 		for (int k = 0; k < N + 1; k++) { 
-			System.out.print("---------------");
+//			System.out.print("---------------");
 		} System.out.println();
 		
 		for (int i = 0; i < N; i++) { // N + 1 stampa anche le somme delle colonne

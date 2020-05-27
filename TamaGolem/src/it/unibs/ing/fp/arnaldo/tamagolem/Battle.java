@@ -11,6 +11,8 @@ public class Battle {
 	private static int P = 0;
 	
 	private static Map<Elements, Integer> disposableRocks = new HashMap<Elements, Integer>();
+	private static Golem golemOne;
+	private static Golem golemTwo;
 	
 	public static void initializeRockStock() {
 		P = (int) (Math.ceil((double) 2*Player.getMaxGolems()*Golem.getMaxRocks()/Equilibrium.getN()) * Equilibrium.getN());
@@ -56,16 +58,18 @@ public class Battle {
 		Equilibrium.print();
 		
 	
-   	    playerOne = Utility.registerPlayer();
-   	    //INSERIRE METODO INTRODUZIONE COMPLETA IN UTILITY
-		playerTwo = Utility.registerPlayer();
+   	   Utility.introPlayer();
 
 
 		Utility.turn(playerOne);
 	
-		Golem golemOne = playerOne.evocateGolem();
-		Utility.turn(playerTwo);
-		Golem golemTwo = playerTwo.evocateGolem();
+		
+        Utility.introGolem();
+//		Golem golemOne =playerOne.setMyGolem(Utility.firstEvoGolem());
+//		Golem golemTwo =playerTwo.setMyGolem(Utility.firstEvoGolem());
+//		Golem golemOne = playerOne.evocateGolem();
+//      	Utility.turn(playerTwo);
+//      	Golem golemTwo = playerTwo.evocateGolem();
 		while (!playerOne.isDefeated() && !playerTwo.isDefeated()) {
 			
 			if (golemOne.rocks.equals(golemTwo.rocks)) {
@@ -115,11 +119,21 @@ public class Battle {
 		
 	}
 
-	public static Player getPlayerOne() {
+	
+	
+	public static Player getPlayerOne(Player playerOne) {
 		return playerOne;
 	}
 
-	public static Player getPlayerTwo() {
+	public static void setPlayerOne(Player playerOne) {
+		Battle.playerOne = playerOne;
+	}
+
+	public static void setPlayerTwo(Player playerTwo) {
+		Battle.playerTwo = playerTwo;
+	}
+
+	public static Player getPlayerTwo(Player playerTwo) {
 		return playerTwo;
 	}
 
@@ -134,7 +148,17 @@ public class Battle {
 	public static int getP() {
 		return P;
 	}
+
+	public static void setGolemOne(Golem golemOne) {
+		Battle.golemOne = golemOne;
+		// TODO Auto-generated method stub
+		
+	}
 	
-	
+	public static void setGolemtwo(Golem golemTwo) {
+		Battle.golemTwo = golemTwo;
+		// TODO Auto-generated method stub
+		
+	}
 
 }

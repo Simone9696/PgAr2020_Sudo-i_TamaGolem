@@ -1,5 +1,7 @@
 package it.unibs.ing.fp.arnaldo.tamagolem;
 
+import java.util.ArrayList;
+
 import it.unibs.fp.mylib.EstrazioniCasuali;
 import it.unibs.fp.mylib.InputDati;
 import it.unibs.fp.mylib.MyMenu;
@@ -9,6 +11,8 @@ public class Utility {
 
 	public static final boolean elementForBeginner = false;
 	private static int N;
+	private static Player playerOne;
+	private static Player playerTwo;
 	
 	
 	public static ElementRock chooseRock() {
@@ -45,11 +49,8 @@ public class Utility {
 
 	public static void battleIntro() { // avvisa utenti che stanno per iniziare una partita
 		System.out.println();
-		System.out.println("FORZE MITI E DISTRUTTIVE SONO IN GIOCO LA BATTAGLIA INCOMBE:\n");
-//		System.out.println("sarete due sfidanti e ... non sarete soli");
-//		System.out.println("finalemnte testerete le abilità dei vostri TAMAGOLEM  ");
-//		System.out.println("presentazioni:");
-//		
+		System.out.println("FORZE MITI E DISTRUTTIVE SONO IN GIOCO LA BATTAGLIA INCOMBE:\n");	
+		
 	}
 
 	public static void throwRockIntro(ElementRock elementRock, Player player) { // avvisa utente che sta per lanciare una roccia
@@ -163,19 +164,50 @@ public class Utility {
     		return new Player(username, ensign);
     	}
     	
+    	public static void introPlayer() {
+    		System.out.println("sarete due sfidanti e ... non sarete soli");
+    		System.out.println("finalemnte testerete le abilità dei vostri TAMAGOLEM  ");    		
+    		System.out.println("adesso le presentazioni:");
+    		
+    		
+    		Battle.setPlayerOne(Utility.registerPlayer());
+    		System.out.println("bene allievo adesso tocca al tuo sifdante:");
+    		Battle.setPlayerTwo(Utility.registerPlayer());
+    	}
+       
+    	public static Golem firstEvoGolem() {
+    	String nameGolem = InputDati.leggiStringaNonVuota("nome del TAMAGOLEM :");  
+        ArrayList<ElementRock> rocks = null;
+		int life = Golem.getMaxLife();
+    	
+    	return new Golem( nameGolem, rocks, life);
+		}
+    	public static void introGolem() {
+    		System.out.println("evocate le votre creature");
+    		System.out.println("dategli in pasto le pietre degli elementi ");    		
+    	    Battle.setGolemOne(Utility.firstEvoGolem());
+    		System.out.println("bene allievo adesso tocca al tuo sifdante:");
+    		 Battle.setGolemtwo(Utility.firstEvoGolem());
+    		
+    	}
 
-//		public static void introductionPlayer(Player playerOne, Player playerTwo) {
-//			System.out.println("sarete due sfidanti e ... non sarete soli");
-//    		System.out.println("finalemnte testerete le abilità dei vostri TAMAGOLEM  ");
-//    		System.out.println("presentazioni:");
-//    		
-//     	    
-//    		playerOne = registerPlayer();
-//    		System.out.println("bene allievo"+playerOne.getName()+"adesso tocca al tuo sifdante:");
-//    		playerTwo = registerPlayer();
-//    		TO DO DA FARE SPER SPOSTARE TUTTO DI QUI
-			
-//		}
-    
+		
+       
+//       public Golem evocateGolem() {
+//   		
+//   		
+//   		evocatedGolems++;
+//   		
+//   		if (evocatedGolems <= MAX_GOLEMS) {
+//   			Utility.evocateGolemIntro();
+//   			myGolem = new Golem();
+//   			myGolem.addRocks();
+//   			
+//   		}
+//   		if (evocatedGolems > MAX_GOLEMS) setDefeated(true); // da sistemare: non deve far generare il golem e poi dire subito che il giocatore è morto
+//   		return myGolem;
+//   		
+//   	}
+       
 	// interazione con utente
 }

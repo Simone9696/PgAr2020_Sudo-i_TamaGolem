@@ -13,7 +13,7 @@ public class Player {
 	public Player(String name, Golem myGolem, char ensign) {
 		
 		setName(name);
-		myGolem= evocateGolem();
+		myGolem= getMyGolem();
 		setEnsign(ensign);
 	}
    public Player(String name, char ensign) {
@@ -49,8 +49,10 @@ public class Player {
 		evocatedGolems++;
 		
 		if (evocatedGolems <= MAX_GOLEMS) {
-			Utility.evocateGolemIntro();
-			myGolem = new Golem();
+			///Utility.evocateGolemIntro();
+			//Utility.firsEvoGolem();
+			
+			//myGolem = new Golem();
 			myGolem.addRocks();
 			
 		}
@@ -73,14 +75,27 @@ public class Player {
 		return myGolem;
 	}
 
-	public void setMyGolem(Golem myGolem) {
-		this.myGolem = myGolem;
+	public Golem setMyGolem(Golem myGolem) {
+		return this.myGolem = myGolem;
 	}
 
 	
 	
 	public void setEnsign(char ensign) {
 		ensign=' ';
+	}
+  public Golem evocateGolemProva() {
+		evocatedGolems++;
+		
+		if (evocatedGolems <= MAX_GOLEMS) {
+			//Utility.evocateGolemIntro();
+			myGolem = new Golem();
+			myGolem.addRocks();
+			
+		}
+		if (evocatedGolems > MAX_GOLEMS) setDefeated(true); // da sistemare: non deve far generare il golem e poi dire subito che il giocatore è morto
+		return myGolem;
+		
 	}
 	
 }
