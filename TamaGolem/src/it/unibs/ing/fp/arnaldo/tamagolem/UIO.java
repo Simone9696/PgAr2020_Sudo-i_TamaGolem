@@ -9,26 +9,34 @@ public class UIO {
 	private final static String MESS_WELCOME = "            SEI ENTRATO NELLA ARENA  \n       terreno di scontro dei TAMAGOLEM  \n   sarai abbastanza scaltro da comprendere \n   l'equilibrio delle forze che governano l'universo?";
 
 
-	
-	
-	
-
-
-
+	/**
+	 * Greets players, initializes programm variables and let two users play a game
+	 */
 	public static void golemIntro() {
 		
 		printWelcome();
-		System.out.println("come primo sfindante clandestino ti è concesso di scegliere il livello della sfida");
-		if (InputDati.yesOrNo("sei un allievo ancora inetto ? rifletti bene prima di rispondere no"))
-        Utility.setNforBeginners();
-		else 
-		Utility.setElementAdvance();
-		System.out.println("");
+		
+		System.out.println("Come primo sfindante clandestino ti è concesso di scegliere il livello della sfida");
+	
+		int n = -1;
+		do {
+			if (InputDati.yesOrNo("Sei un allievo ancora inetto ? Rifletti bene prima di rispondere no"))
+				Utility.beginnerAdvise();
+			else {
+				n = Utility.setElementAdvance();
+				if (n != 0) Equilibrium.setMatrix(n);
+			} 
+		} while (n == 0);
+		
+		System.out.println();
+		
 		Golem.initializeMaxRocks();
 		Player.initializeMaxGolems();
 		Battle.initializeRockStock();
+		
 		Battle.battle();
-		System.exit(0);
+		
+		printGoodbye();
 	}
 	
 	
@@ -49,5 +57,5 @@ public class UIO {
 		System.out.println(MESS_GOODBYE);
 		System.out.println(frame);
 
-}
+	}
 }

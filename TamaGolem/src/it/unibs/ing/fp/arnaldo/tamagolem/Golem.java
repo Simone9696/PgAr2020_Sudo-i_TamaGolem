@@ -9,43 +9,24 @@ public class Golem {
 
 	ArrayList<ElementRock> rocks; 
 	
-	
 	private String nameGolem;
 	
 	private static int MAX_ROCKS = 0;
 	
-	private static final int MAX_LIFE = 5; // cambiare a piacere
-	
-	private int life = MAX_LIFE;
+	private int life = Equilibrium.getN();
 	
 	private int rockThrown = 0;
 	
 	
 	
-	
-	
-	public Golem() {}
-	
-	
-	
-	public Golem(String nameGolem) {
-	
-		this.nameGolem = nameGolem;
-	}
-
-	
-	public Golem(String nameGolem, ArrayList<ElementRock> rocks, int life) {
+	public Golem() {
 		
-		
-		this.nameGolem = nameGolem;
-		this.rocks  = new ArrayList<ElementRock>();
-		this.life = getMaxLife();
+		life = Equilibrium.getN();
 	}
-
-
-
 	
-
+	/**
+	 * Sets the maximum rocks a Golem can eat
+	 */
 	public static void initializeMaxRocks() {
 		MAX_ROCKS = (int) (Math.ceil((Equilibrium.getN() + 1) / 3.0) + 1);
 	}
@@ -55,6 +36,11 @@ public class Golem {
 		
 	}
 	
+	/**
+	 * Throws a rock
+	 * @param player the player associated with the Golem
+	 * @return the element corresponding to the rock
+	 */
 	public ElementRock throwRock(Player player) {
 		
 		if (rockThrown == rocks.size()) {
@@ -69,6 +55,9 @@ public class Golem {
 		
 	}
 	
+	/**
+	 * Prompts user to feed his Golem with rocks
+	 */
 	public void addRocks() {
 		
 		Utility.addRocksIntro();
@@ -109,8 +98,13 @@ public class Golem {
 	public static int getMaxRocks() {
 		return MAX_ROCKS;
 	}
+	
+	public String getNameGolem() {
+		return nameGolem;
+	}
 
-	public static int getMaxLife() {
-		return MAX_LIFE;
+
+	public void setNameGolem(String nameGolem) {
+		this.nameGolem = nameGolem;
 	}
 }

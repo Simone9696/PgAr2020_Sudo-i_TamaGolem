@@ -6,22 +6,20 @@ public class Player {
 	
 	private String name;
 	private boolean defeated = false;
-	private int evocatedGolems = 0;
+	private int evocatedGolems = 1;
 	private Golem myGolem;
 	private char ensign;
 	
-	public Player(String name, Golem myGolem, char ensign) {
-		
-		setName(name);
-		myGolem= getMyGolem();
-		setEnsign(ensign);
-	}
-   public Player(String name, char ensign) {
+
+	public Player(String name, char ensign) {
 		
 		setName(name);
 		setEnsign(ensign);
 	}
 
+	/**
+	 * Sets the maximum Golems a player can evocate
+	 */
 	public static void initializeMaxGolems() {
 		MAX_GOLEMS = (int) Math.ceil((double)(Equilibrium.getN() - 1)*(Equilibrium.getN() - 2)/(2 * Golem.getMaxRocks()));
 	}
@@ -43,17 +41,19 @@ public class Player {
 		this.defeated = defeated;
 	}
 
+	/**
+	 * Evocates a new Golem
+	 * @return the Golem evocated
+	 */
 	public Golem evocateGolem() {
 		
 		
 		evocatedGolems++;
 		
 		if (evocatedGolems <= MAX_GOLEMS) {
-			///Utility.evocateGolemIntro();
-			//Utility.firsEvoGolem();
 			
-			//myGolem = new Golem();
-			myGolem.addRocks();
+			Utility.evocateGolemIntro();
+			myGolem = Utility.firstEvoGolem();
 			
 		}
 		if (evocatedGolems > MAX_GOLEMS) setDefeated(true); // da sistemare: non deve far generare il golem e poi dire subito che il giocatore è morto
@@ -78,24 +78,9 @@ public class Player {
 	public Golem setMyGolem(Golem myGolem) {
 		return this.myGolem = myGolem;
 	}
-
-	
 	
 	public void setEnsign(char ensign) {
-		ensign=' ';
-	}
-  public Golem evocateGolemProva() {
-		evocatedGolems++;
-		
-		if (evocatedGolems <= MAX_GOLEMS) {
-			//Utility.evocateGolemIntro();
-			myGolem = new Golem();
-			myGolem.addRocks();
-			
-		}
-		if (evocatedGolems > MAX_GOLEMS) setDefeated(true); // da sistemare: non deve far generare il golem e poi dire subito che il giocatore è morto
-		return myGolem;
-		
+		this.ensign= ensign;
 	}
 	
 }
