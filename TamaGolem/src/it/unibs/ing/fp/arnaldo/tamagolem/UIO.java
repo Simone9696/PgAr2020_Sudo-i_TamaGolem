@@ -23,8 +23,11 @@ public class UIO {
 			if (InputDati.yesOrNo("Sei un allievo ancora inetto ? Rifletti bene prima di rispondere no"))
 				Utility.beginnerAdvise();
 			else {
-				n = Utility.setElementAdvance();
-				if (n != 0) Equilibrium.setMatrix(n);
+				do {
+					n = Utility.setElementAdvance();
+					if (n > 0)
+						Equilibrium.setMatrix(n);
+				} while (n == -2);
 			} 
 		} while (n == 0);
 		

@@ -189,7 +189,7 @@ public class Utility {
 		case 0:
 			if (InputDati.yesOrNo("per tornare indietro devi ammettere di aver paura,hai paura?"))
 				return 0;
-			else setElementAdvance();
+			else return -2;
 		case 1:
 			System.out.println("equilibrio di elementi controllabili da matricole");
 			return Equilibrium.setN(EstrazioniCasuali.estraiIntero(4, 5));
