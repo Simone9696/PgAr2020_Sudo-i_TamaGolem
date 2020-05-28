@@ -1,6 +1,5 @@
 package it.unibs.ing.fp.arnaldo.tamagolem;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -62,6 +61,8 @@ public class Battle {
 		return !empthy;
 	}
 	
+	
+	
 	/**
 	 * Manages a battle cicle
 	 */
@@ -71,7 +72,9 @@ public class Battle {
 		
 		setDisposableRocks(); // riempie la scorta comune di rocce
 		
-		while (!Equilibrium.newEquilibrium()); // genera un nuovo equilibrio
+		while (!Equilibrium.newEquilibrium()); // genera un nuovo equilibrio7
+		
+		//Equilibrium.print();
 		
 		Utility.introPlayer(); // fa impostare ai giocatori i loro nomi
 	
@@ -86,7 +89,7 @@ public class Battle {
 			
 			while (!golemOne.isDead() && !golemTwo.isDead()) { // finché entrambi i Golem sono vivi
 
-				Utility.push();
+				Utility.push(); // aspetta che si prema invio
 				ElementRock rockOne = golemOne.throwRock(playerOne); // lancia le due rocce
 				ElementRock rockTwo = golemTwo.throwRock(playerTwo);
 				int result = Equilibrium.calculateInteraction(rockOne, rockTwo); // calcola interazione fra le rocce
@@ -106,14 +109,14 @@ public class Battle {
 			
 			if (golemOne.isDead()) { // sono sicuro che non muoiono mai contemporaneamente
 				Utility.turn(playerOne);
-				golemOne = playerOne.evocateGolem(); 
+				golemOne = playerOne.evocateGolem(); // faccio evocare un nuovo golem
 			} else {
 				Utility.turn(playerTwo);
 				golemTwo = playerTwo.evocateGolem();
 			}
 		}
 		
-		if (!areThereStillRocks()) { // la partita finisce per mancanza di rocce
+		if (!areThereStillRocks()) { // la partita finisce se sono finite le rocce
 			Utility.finishedRocks();
 			return;
 		}

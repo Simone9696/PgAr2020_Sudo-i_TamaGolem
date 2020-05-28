@@ -3,11 +3,11 @@ import java.util.*;
 
 public class Equilibrium {
 	
-	private static  int N = 3;// oppure far scegliere all'utente il numero di elementi (tra 3 e 10)
+	private static int N = 3;
 	private static int maxWeight = N;
 	
 	
-	private static int equilibrium[][] = new int[N+1][N+1]; // usare elements id come indici
+	private static int equilibrium[][] = new int[N+1][N+1];
 
 	
 	public static int getMaxWeight() {
@@ -28,7 +28,7 @@ public class Equilibrium {
 	 */
 	public static boolean newEquilibrium() {
 		
-		setMaxWeight(getN());
+		setMaxWeight(getN()); // setto il peso massimo per assicurarmi che sia uguale a N
 		
 		for (int i = 0; i < N + 1; i++) { // inizializzo tutta la matrice a 0
 			for (int j = 0; j < N + 1; j++) {
@@ -39,15 +39,15 @@ public class Equilibrium {
 		for (int i = 0; i < N; i++) { // itero saltando ultima riga e colonna che servono per tracciare
 			for (int j = 0; j < N; j++) { // le somme di righe e colonne
 				if (j > i) { // lavoro sul triangolo superiore
-					ArrayList<Integer> list = generatePossibleWeights(i, j);
+					ArrayList<Integer> list = generatePossibleWeights(i, j); // genero la lista di pesi papabili per una cella
 					try {
 						equilibrium[i][j] = generateRandomWeight(list); // scelgo un numero casuale tra quelli possibili
-						equilibrium[j][i] = -equilibrium[i][j];
-						setRowSum(i);
+						equilibrium[j][i] = -equilibrium[i][j]; // imposto l'antisimmetrico
+						setRowSum(i); // aggiorno somme di righe e colonne
 						setColumnSum(j);
 						setRowSum(j);
 						setColumnSum(i);
-					} catch (Exception e) { // tasso fallimento circa 1 %
+					} catch (Exception e) { // acchiappo un eventuale fallimento
 						return false;
 					}
 				}
@@ -152,8 +152,8 @@ public class Equilibrium {
 	}
 	
 	/**
-	 * @see https://www.geeksforgeeks.org/print-all-possible-combinations-of-r-elements-in-a-given-array-of-size-n/
 	 * Adds all the possible sums of 'r' elements of a integer list to a set
+	 * @see https://www.geeksforgeeks.org/print-all-possible-combinations-of-r-elements-in-a-given-array-of-size-n/
 	 * @param list the {@linkplain ArrayList} of integer elements
 	 * @param data a temporary array to store a combination
 	 * @param start start index in list
@@ -237,7 +237,7 @@ public class Equilibrium {
 		System.out.print("\t\t");
 		
 		for (int i = 0; i < N; i++) { 
-			System.out.print(Elements.getElement(i).toString() + (Elements.getElement(i).toString().length() > 7 ? "\t" : "\t|\t"));
+			System.out.print(Elements.getElement(i).toString() +  "\t|     ");
 		} System.out.println();
 		
 		for (int k = 0; k < N + 1; k++) { 
