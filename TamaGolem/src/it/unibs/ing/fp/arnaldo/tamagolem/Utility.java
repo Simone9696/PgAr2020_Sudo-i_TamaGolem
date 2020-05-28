@@ -134,8 +134,11 @@ public class Utility {
 	 */
 	public static void printStatus(Player playerOne, Player playerTwo) {
 		System.out.println();
-		System.out.println(playerOne.getName() + "\t-->\tVita TamaGolem: " + playerOne.getMyGolem().getLife());
-		System.out.println(playerTwo.getName() + "\t-->\tVita TamaGolem: " + playerTwo.getMyGolem().getLife());
+		String str = new String(playerOne.getName() + "\t-->\tVita TamaGolem: " + playerOne.getMyGolem().getLife());
+		System.out.println(BelleStringhe.incorniciaCentrato(str, 40, playerOne.getEnsign()));
+		str = playerTwo.getName() + "\t-->\tVita TamaGolem: " + playerTwo.getMyGolem().getLife();
+		System.out.println();
+		System.out.println(BelleStringhe.incorniciaCentrato(str, 40, playerTwo.getEnsign()));
 	}
 
 	/**
@@ -168,11 +171,11 @@ public class Utility {
 	}
 
 	/**
-	 * Promts user to press a key to continue
+	 * Promts user to press enter to continue
 	 */
 	public static void push() {
 		System.out.println();
-		util.mylib.diSG.InputDati.isInvioPremuto("", "Premi un tasto per lanciare la prossima roccia\n");
+		util.mylib.diSG.InputDati.isInvioPremuto("", "Premi invio per lanciare la prossima roccia\n");
 		
 	}
 	
@@ -242,8 +245,8 @@ public class Utility {
 	public static Golem firstEvoGolem() {
 		
 		Golem golem = new Golem();
-    	String nameGolem = InputDati.leggiStringaNonVuota("Nome del TAMAGOLEM :"); 
-    	golem.setNameGolem(nameGolem);
+    	//String nameGolem = InputDati.leggiStringaNonVuota("Nome del TAMAGOLEM :"); 
+    	//golem.setNameGolem(nameGolem);
         golem.addRocks();
 	
         return golem;
@@ -273,6 +276,13 @@ public class Utility {
 	public static void beginnerAdvise() {
 		System.out.println();
 		System.out.println("Giocherete con 3 elementi");
+		
+	}
+
+	public static void revelation() {
+		System.out.println();
+		System.out.println("La partita è terminata. E' arrivato il momento di svelare\n"+
+							"l'equilibrio delle forze del Mondo.\n");
 		
 	}
 

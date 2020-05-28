@@ -83,4 +83,7 @@ public class Player {
 		this.ensign= ensign;
 	}
 	
+	public char getEnsign() {
+		return this.ensign;
+	}
 }

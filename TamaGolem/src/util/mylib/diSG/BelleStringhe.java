@@ -29,6 +29,20 @@ public class BelleStringhe {
 
 	}
 
+	public static String incorniciaCentrato(String s, int lunghezzaCornice, char c) {
+		StringBuilder res = new StringBuilder();
+		String sCentrato = BelleStringhe.centrata(s, lunghezzaCornice);
+		String cornice = BelleStringhe.stampaCornice(lunghezzaCornice, c);
+		res.append(cornice);
+		res.append(ACAPO);
+		res.append(sCentrato);
+		res.append(ACAPO);
+		res.append(cornice);
+		res.append(ACAPO);
+		return res.toString();
+
+	}
+	
 	public static String incolonna(String s, int larghezza) {
 		StringBuilder res = new StringBuilder(larghezza);
 		int numCharDaStampare = Math.min(larghezza, s.length());

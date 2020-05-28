@@ -2,6 +2,7 @@ package it.unibs.ing.fp.arnaldo.tamagolem;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Battle {
 	
@@ -10,7 +11,7 @@ public class Battle {
 	
 	private static int P = 0;
 	
-	private static Map<Elements, Integer> disposableRocks = new HashMap<Elements, Integer>();
+	private static Map<Elements, Integer> disposableRocks = new TreeMap<Elements, Integer>();
 	
 	private static Golem golemOne;
 	private static Golem golemTwo;
@@ -78,7 +79,7 @@ public class Battle {
 
 		while (!playerOne.isDefeated() && !playerTwo.isDefeated()) { // finché sono entrambi in vita
 			
-			if (golemOne.rocks.equals(golemTwo.rocks)) { 	// se hanno lanciato le stesse rocce nello stesso ordine 
+			if (golemOne.rocks.toString().equals((golemTwo.rocks).toString())) { 	// se hanno lanciato le stesse rocce nello stesso ordine 
 				Utility.tie();								// finisce in pareggio
 				return;
 			}
@@ -122,6 +123,8 @@ public class Battle {
 		} else {
 			Utility.winner(playerOne);
 		}
+		
+		Utility.revelation();
 		
 		Equilibrium.print(); // stampa l'equilibrio
 		
