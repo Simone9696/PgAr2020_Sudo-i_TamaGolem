@@ -7,7 +7,7 @@ public class Golem {
 	
 	private boolean dead = false;
 
-	ArrayList<ElementRock> rocks; 
+	ArrayList<ElementRock> rocks = new ArrayList<ElementRock>(); 
 	
 	private String nameGolem;
 	
