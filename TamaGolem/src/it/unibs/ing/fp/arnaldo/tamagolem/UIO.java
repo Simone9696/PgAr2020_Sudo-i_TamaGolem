@@ -13,63 +13,32 @@ public class UIO {
 	 * Greets players, initializes programm variables and let two users play a game
 	 */
 	public static void golemIntro() {
-		
-		int x = 0;   
+		 
 		printWelcome();
 		
-		System.out.println("Come primo sfindante clandestino ti è concesso di scegliere il livello della sfida");
-	 
-		int n = -1;
 		do {
-			
-			if (InputDati.yesOrNo("Sei un allievo ancora inetto ? Rifletti bene prima di rispondere no"))
-				Utility.beginnerAdvise();
-			else {
-				do {
-					n = Utility.setElementAdvance();
-					if (n > 0)
-						Equilibrium.setMatrix(n);
-				} while (n == -2);
-			} 
-		 x++;
-		} while (n == 0);
-		
-		System.out.println();
-		
-		Golem.initializeMaxRocks();
-		Player.initializeMaxGolems();
-		Battle.initializeRockStock();
-		
-		Battle.battle();
-		
-		printGoodbye();
-		if(Utility.newPlay())
-		do {
+			System.out.println("Come primo sfindante clandestino ti è concesso di scegliere il livello della sfida");
+			int n = -1;
 			do {
-				
-				
+
+				if (InputDati.yesOrNo("Sei un allievo ancora inetto ? Rifletti bene prima di rispondere no"))
+					Utility.beginnerAdvise();
+				else {
 					do {
 						n = Utility.setElementAdvance();
 						if (n > 0)
 							Equilibrium.setMatrix(n);
 					} while (n == -2);
-				
-			 
+				}
 			} while (n == 0);
 			System.out.println();
-			
 			Golem.initializeMaxRocks();
 			Player.initializeMaxGolems();
 			Battle.initializeRockStock();
-			
 			Battle.battle();
-			
 			printGoodbye();
-			
-			
-		}
-			
-	    while(!Utility.newPlay());	
+		} while (Utility.newPlay());
+		
 		printGoodbyefinal();
 	}
 	
