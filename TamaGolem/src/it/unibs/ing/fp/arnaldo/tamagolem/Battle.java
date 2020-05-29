@@ -116,15 +116,14 @@ public class Battle {
 			}
 		}
 		
-		if (!areThereStillRocks()) { // la partita finisce se sono finite le rocce
-			Utility.finishedRocks();
-			return;
-		}
-		
 		if (playerOne.isDefeated()) { // stampa chi ha vinto
 			Utility.winner(playerTwo);
 		} else {
 			Utility.winner(playerOne);
+		}
+		
+		if (!areThereStillRocks()) { // la partita finisce se sono finite le rocce
+			Utility.finishedRocks();
 		}
 		
 		Utility.revelation();
