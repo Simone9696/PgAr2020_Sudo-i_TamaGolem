@@ -16,20 +16,23 @@ public class UIO {
 		 
 		printWelcome();
 		
+		boolean primo = true;
+		
 		do {
 			System.out.println("Come primo sfindante clandestino ti è concesso di scegliere il livello della sfida");
 			int n = -1;
 			do {
 
-				if (InputDati.yesOrNo("Sei un allievo ancora inetto ? Rifletti bene prima di rispondere no"))
+				if (primo && InputDati.yesOrNo("Sei un allievo ancora inetto ? Rifletti bene prima di rispondere no")) // sfrutto il fatto che se primo è false la seconda condizione non viene verificata
 					Utility.beginnerAdvise();
 				else {
+					if (!primo) Utility.noMoreNovel();
 					do {
 						n = Utility.setElementAdvance();
 						if (n > 0)
 							Equilibrium.setMatrix(n);
 					} while (n == -2);
-				}
+				} primo = false;
 			} while (n == 0);
 			System.out.println();
 			Golem.initializeMaxRocks();

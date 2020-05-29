@@ -316,4 +316,13 @@ public class Utility {
 							"l'equilibrio delle forze del Mondo.\n");
 		
 	}
+
+	/**
+	 * Prints a message in player is at 2nd or more game
+	 */
+	public static void noMoreNovel() {
+		System.out.println();
+		System.out.println("Non sei più un novellino! Ora devi per forza scegliere un livello: ");
+		
+	}
 }
