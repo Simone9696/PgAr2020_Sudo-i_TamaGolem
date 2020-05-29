@@ -14,8 +14,8 @@ import util.mylib.diSG.BelleStringhe;
 
 public class Utility {
 
-	private static  char VESSILLO ;
-
+	
+	private static char VESSILLO;
 
 	public static final boolean elementForBeginner = false;
 	
@@ -154,13 +154,13 @@ public class Utility {
 	}
 	public static void printStatusP2(Player playerTwo) {
 		
-		System.out.println(BelleStringhe.stampaStringaCorniceCentrato(playerTwo.toString(),setVESSILLO(playerTwo.getEnsign())));
+		System.out.println(BelleStringhe.stampaStringaCorniceCentrato(playerTwo.toString(),getVESSILLO(playerTwo.getEnsign())));
 	}
 	
 	public static void intoFight(Player playerOne, Player playerTwo) {
 		printStatusP1(playerOne);
         printStatusP2(playerTwo);
-        System.out.println(String.format("%s %s HERE WE GO FIGHT STARTS" ,playerOne.getName(),playerTwo.getName()));
+        System.out.println(String.format("%s & %s HERE WE GO !FIGHT >>>>" ,playerOne.getName(),playerTwo.getName()));
         System.out.println();
         System.out.println(String.format("le pietre di  %s e quelle di %s si scontreranno " ,playerOne.getMyGolem().getNameGolem(),playerTwo.getMyGolem().getNameGolem()));
 	}
@@ -307,13 +307,14 @@ public class Utility {
 		System.out.println("Giocherete con 3 elementi");
 		
 	}
-	public static  char setVESSILLO(char vESSILLO) {
+	public static  char setVESSILLO(char VESSILLO) {
 		return VESSILLO = Player.getEnsign();
 	}
-
-	public static char getVESSILLO() {
-		return VESSILLO;
+	
+	public static char getVESSILLO(char c) {
+		return VESSILLO=Player.getEnsign();
 	}
+	
 	public static void revelation() {
 		System.out.println();
 		System.out.println("La partita è terminata. E' arrivato il momento di svelare\n"+

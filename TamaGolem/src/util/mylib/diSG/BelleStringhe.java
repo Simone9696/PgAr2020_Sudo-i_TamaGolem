@@ -2,12 +2,14 @@ package util.mylib.diSG;
 
 import java.util.ArrayList;
 
+import it.unibs.ing.fp.arnaldo.tamagolem.Utility;
+
 /** Classe che fa delle indentazioni alle stringhe in console 
  * @author Simone Giocomini*/
 public class BelleStringhe {
 
 	public static final char TRATTINO = '-';
-
+    public static final char VESSILLO = Utility.getVESSILLO();
 	private final static String SPAZIO = " ";
 
 	public final static String ACAPO = System.lineSeparator();
@@ -18,7 +20,7 @@ public class BelleStringhe {
 	public static String incorniciaCentrato(String s, int lunghezzaCornice) {
 		StringBuilder res = new StringBuilder();
 		String sCentrato = BelleStringhe.centrata(s, lunghezzaCornice);
-		String cornice = BelleStringhe.stampaCornice(lunghezzaCornice, TRATTINO);
+		String cornice = BelleStringhe.stampaCornice(lunghezzaCornice, VESSILLO);
 		res.append(cornice);
 		res.append(ACAPO);
 		res.append(sCentrato);
@@ -52,7 +54,7 @@ public class BelleStringhe {
 		return res.toString();
 	}
 
-	private static String centrata(String s, int larghezza) {
+	public static String centrata(String s, int larghezza) {
 		StringBuilder res = new StringBuilder(larghezza);
 		if (larghezza <= s.length())
 			res.append(s.substring(larghezza));
@@ -85,7 +87,7 @@ public class BelleStringhe {
 	}
 
 	public static String stampaStringaCorniceCentrato(String titolo) {
-		return stampaStringaCorniceCentrato(titolo, BelleStringhe.TRATTINO);
+		return stampaStringaCorniceCentrato(titolo, BelleStringhe.VESSILLO);
 	}
 
 	public static String stampaStringaCorniceCentrato(String titolo, char segnoCornice) {
