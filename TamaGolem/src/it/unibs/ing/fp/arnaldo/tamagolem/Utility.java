@@ -15,7 +15,8 @@ import util.mylib.diSG.BelleStringhe;
 public class Utility {
 
 	
-	private static char VESSILLO;
+	//private char VESSILLO1;
+	//private char VESSILLO2;
 
 	public static final boolean elementForBeginner = false;
 	
@@ -39,7 +40,7 @@ public class Utility {
 	/**
 	 * Prompts user to choose another rock
 	 */
-	public static void chooseAnotherRock() { // avvisa utente che la roccia scelta non è disponibile
+	public static void chooseAnotherRock() { // avvisa utente che la roccia scelta non ï¿½ disponibile
 		System.out.println();
 		System.out.println("Roccia non piu' disponibile\n");
 		
@@ -150,11 +151,11 @@ public class Utility {
 	
 	public static void printStatusP1(Player playerOne) {
 		
-		System.out.println(BelleStringhe.stampaStringaCorniceCentrato(playerOne.toString(),setVESSILLO(playerOne.getEnsign())));
+		System.out.println(BelleStringhe.stampaStringaCorniceCentrato(playerOne.toString(),playerOne.getEnsign()));
 	}
 	public static void printStatusP2(Player playerTwo) {
 		
-		System.out.println(BelleStringhe.stampaStringaCorniceCentrato(playerTwo.toString(),getVESSILLO(playerTwo.getEnsign())));
+		System.out.println(BelleStringhe.stampaStringaCorniceCentrato(playerTwo.toString(),playerTwo.getEnsign()));
 	}
 	
 	public static void intoFight(Player playerOne, Player playerTwo) {
@@ -248,7 +249,7 @@ public class Utility {
 	public static Player registerPlayer() {
 		
 		String username = InputDati.leggiStringaNonVuota("inserisci username :");
-		char ensign =InputDati.leggiCharNonVuoto("scegli un carattere per il tuo vessillo");
+		char ensign =InputDati.leggiChar("scegli un carattere per il tuo vessillo");
 		return new Player(username, ensign);
 	}
 	
@@ -258,7 +259,7 @@ public class Utility {
 	public static void introPlayer() {
 		
 		System.out.println("Sarete due sfidanti e ... non sarete soli");
-		System.out.println("Finalemnte testerete le abilità dei vostri TAMAGOLEM !!! ");    		
+		System.out.println("Finalemnte testerete le abilitï¿½ dei vostri TAMAGOLEM !!! ");    		
 		System.out.println("registrazione alla sida :");
 		
 		
@@ -305,19 +306,20 @@ public class Utility {
 	public static void beginnerAdvise() {
 		System.out.println();
 		System.out.println("Giocherete con 3 elementi");
+	}
 		
-	}
-	public static  char setVESSILLO(char VESSILLO) {
-		return VESSILLO = Player.getEnsign();
-	}
+	//}
+	//public void setVESSILLO() {
+	//	VESSILLO = Player.getEnsign();
+	//	}
 	
-	public static char getVESSILLO(char c) {
-		return VESSILLO=Player.getEnsign();
-	}
+	//public char getVESSILLO() {
+	//		return VESSILLO;
+	//}
 	
 	public static void revelation() {
 		System.out.println();
-		System.out.println("La partita è terminata. E' arrivato il momento di svelare\n"+
+		System.out.println("La partita ï¿½ terminata. E' arrivato il momento di svelare\n"+
 							"l'equilibrio delle forze del Mondo.\n");
 		
 	}

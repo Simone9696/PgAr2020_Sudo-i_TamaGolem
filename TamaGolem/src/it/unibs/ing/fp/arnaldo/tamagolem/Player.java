@@ -8,7 +8,7 @@ public class Player {
 	private boolean defeated = false;
 	private int evocatedGolems = 1;
 	private Golem myGolem;
-	private static char ensign;
+	private char ensign;
 	
 
 	public Player(String name, char ensign) {
@@ -56,7 +56,7 @@ public class Player {
 			myGolem = Utility.firstEvoGolem();
 			
 		}
-		if (evocatedGolems > MAX_GOLEMS) setDefeated(true); // da sistemare: non deve far generare il golem e poi dire subito che il giocatore è morto
+		if (evocatedGolems > MAX_GOLEMS) setDefeated(true); // da sistemare: non deve far generare il golem e poi dire subito che il giocatore ï¿½ morto
 		return myGolem;
 		
 	}
@@ -77,12 +77,12 @@ public class Player {
 		return this.myGolem = myGolem;
 	}
 	
-	public static char getEnsign() {
+	public char getEnsign() {
 		return ensign;
 	}
 
-	public void setEnsign(char ensign) {
-		this.ensign= ensign;
+	public void setEnsign(char _ensign) {
+		ensign = _ensign;
 	}
 	public String toString() {
 		StringBuilder cadet = new StringBuilder();
