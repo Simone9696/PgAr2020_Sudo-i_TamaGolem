@@ -1,9 +1,9 @@
 package it.unibs.fp.mylib;
-
 import java.util.*;
 public class InputDati 
 {
 	  private static Scanner lettore = creaScanner();
+	  private static Scanner lettore1 = new Scanner(System.in);
 	  
 	  private final static String ERRORE_FORMATO = "Attenzione: il dato inserito non e' nel formato corretto";
 	  private final static String ERRORE_MINIMO= "Attenzione: e' richiesto un valore maggiore o uguale a ";
@@ -67,6 +67,32 @@ public class InputDati
 	   return valoreLetto;
 	  }
 	  
+	  public static char leggiCharNonVuoto (String messaggio)
+	  {
+	   boolean finito = false;
+	   char valoreLetto = '\0';
+	   do
+	    {
+	     System.out.print(messaggio);
+	     String lettura = lettore.next();
+	     if (lettura.length() > 0)
+	      {
+	    	 int i = 0;
+	    	 while (lettura.charAt(i) == ' ') i++;
+	    	 if (lettura.length() > i) {
+	       valoreLetto = lettura.charAt(i);
+	       finito = true;
+	    	 }
+	      }
+	     else
+	      {
+	       System.out.println(ERRORE_STRINGA_VUOTA);
+	      }
+	    } while (!finito);
+	   return valoreLetto;
+	  }
+	  
+	  
 	  public static char leggiUpperChar (String messaggio, String ammissibili)
 	  {
 	   boolean finito = false;
@@ -99,12 +125,33 @@ public class InputDati
 	     catch (InputMismatchException e)
 	      {
 	       System.out.println(ERRORE_FORMATO);
-	       String daButtare = lettore.next();
+	       lettore.next();
 	      }
 	    } while (!finito);
 	   return valoreLetto;
 	  }
 
+	  public static int leggiInteroClassico (String messaggio)
+	  {
+	   boolean finito = false;
+	   int valoreLetto = 0;
+	   do
+	    {
+	     System.out.print(messaggio);
+	     try
+	      {
+	       valoreLetto = lettore1.nextInt();
+	       finito = true;
+	      }
+	     catch (InputMismatchException e)
+	      {
+	       System.out.println(ERRORE_FORMATO);
+	       lettore.next();
+	      }
+	    } while (!finito);
+	   return valoreLetto;
+	  }
+	  
 	  public static int leggiInteroPositivo(String messaggio)
 	  {
 		  return leggiInteroConMinimo(messaggio,1);
@@ -167,7 +214,7 @@ public class InputDati
 	     catch (InputMismatchException e)
 	      {
 	       System.out.println(ERRORE_FORMATO);
-	       String daButtare = lettore.next();
+	       lettore.next();
 	      }
 	    } while (!finito);
 	   return valoreLetto;

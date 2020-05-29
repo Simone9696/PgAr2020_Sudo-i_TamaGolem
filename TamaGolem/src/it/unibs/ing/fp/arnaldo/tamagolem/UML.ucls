@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="it.unibs.ing.fp.arnaldo.tamagolem.Utility" project="TamaGolem" 
     file="/TamaGolem/src/it/unibs/ing/fp/arnaldo/tamagolem/Utility.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="232" y="75"/>    
+    <position height="-1" width="-1" x="1081" y="323"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <enumeration id="3" language="java" name="it.unibs.ing.fp.arnaldo.tamagolem.Elements" project="TamaGolem" 
     file="/TamaGolem/src/it/unibs/ing/fp/arnaldo/tamagolem/Elements.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="897" y="599"/>    
+    <position height="-1" width="-1" x="904" y="575"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </enumeration>  
   <class id="4" language="java" name="it.unibs.ing.fp.arnaldo.tamagolem.Equilibrium" project="TamaGolem" 
     file="/TamaGolem/src/it/unibs/ing/fp/arnaldo/tamagolem/Equilibrium.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="385" y="220"/>    
+    <position height="-1" width="-1" x="358" y="171"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="it.unibs.ing.fp.arnaldo.tamagolem.Golem" project="TamaGolem" 
     file="/TamaGolem/src/it/unibs/ing/fp/arnaldo/tamagolem/Golem.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="651" y="542"/>    
+    <position height="-1" width="-1" x="660" y="523"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,42 +75,64 @@
   </class>  
   <association id="9">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="10" name="type"/>      
-      <multiplicity id="11" minimum="0" maximum="1"/>    
+      <attribute id="10" name="type">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="11" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="12">    
+    <bendpoint x="837" y="174"/>    
+    <bendpoint x="659" y="328"/>    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="13" name="playerOne"/>      
-      <multiplicity id="14" minimum="0" maximum="1"/>    
+      <attribute id="13" name="disposableRocks">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="14" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="15">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="16" name="rocks"/>      
-      <multiplicity id="17" minimum="0" maximum="2147483647"/>    
+      <attribute id="16" name="rocks">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="17" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="18">    
-    <bendpoint x="634" y="324"/>    
-    <bendpoint x="696" y="304"/>    
+    <bendpoint x="608" y="323"/>    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="19" name="disposableRocks"/>      
-      <multiplicity id="20" minimum="0" maximum="2147483647"/>    
+      <attribute id="19" name="playerOne">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="20" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="21">    
+    <bendpoint x="479" y="366"/>    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="22" name="playerTwo"/>      
-      <multiplicity id="23" minimum="0" maximum="1"/>    
+      <attribute id="22" name="playerTwo">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="23" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  

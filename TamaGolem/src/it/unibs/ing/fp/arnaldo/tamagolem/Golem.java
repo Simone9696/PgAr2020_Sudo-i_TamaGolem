@@ -1,56 +1,110 @@
 package it.unibs.ing.fp.arnaldo.tamagolem;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Golem {
 	
 	private boolean dead = false;
 
-	ArrayList<ElementRock> rocks = new ArrayList<ElementRock>();
+	ArrayList<ElementRock> rocks = new ArrayList<ElementRock>(); 
 	
-	private static final int MAX_ROCKS = P;
+	private String nameGolem;
 	
-	private int life = V;
+	private static int MAX_ROCKS = 0;
+	
+	private int life = Equilibrium.getN();
+	
+	private int rockThrown = 0;
+	
+	
+	
+	public Golem() {
+		
+		life = Equilibrium.getN();
+	}
+	
+	/**
+	 * Sets the maximum rocks a Golem can eat
+	 */
+	public static void initializeMaxRocks() {
+		MAX_ROCKS = (int) (Math.ceil((Equilibrium.getN() + 1) / 3.0) + 1);
+	}
 	
 	public boolean isDead() {
+		return dead;
 		
 	}
 	
-	public ElementRock throwRock() {
-		
-	}
-	
-	/**number rock in golem * non sapevo se fare cosi o diverso boh in realtà dovrei fare due arraylist una dell
-	 * quantità P cioè pietre nel Golem e sta qui poi ci sarebbero le  Scorte di S sempre calcolate su tutte le pietr  
-	 * pero chiedo simone perchè forse in Player in svocazione sta cosa quindi inutile poi comuque ci sarebbe la scelta delle pietr
-	 * quindi forse solo il massimo prietre e sono fuori strada */
-	
-	
-	public void eatRocks(ElementRock rock) {
-	   for (int i = 0; i <listaRockSize() ; i++) { 
-		   rocks.add(i, rock);
-		 
-		
-		   
-		   
-	}
-		
-	}
-	/**quantity of rocks available in the tamagolem for each single evocation
-	 * P=⎡(N + 1) / 3⎤ + 1.  N= number of element 
-	 * @param rocksPower 
-	 * @return
+	/**
+	 * Throws a rock
+	 * @param player the player associated with the Golem
+	 * @return the element corresponding to the rock
 	 */
-	public int listaRockSize() {
-	  int rocksPower = Utility.balanceOfWorld(rocksPower);
-	  int elementRockSize = Math.round((rocksPower+1)/3)+1;
+	public ElementRock throwRock(Player player) {
+		
+		if (rockThrown == rocks.size()) {
+			rockThrown = 0;
+		}
+		
+		rockThrown++;
+		
+		Utility.throwRockIntro(rocks.get(rockThrown - 1), player);
+		
+		return rocks.get(rockThrown - 1);
+		
 	}
 	
-	/**calculate life by:
-	 * 
-	 * 
-	 * @return
+	/**
+	 * Prompts user to feed his Golem with rocks
 	 */
+	public void addRocks() {
+		
+		Utility.addRocksIntro();
+		
+		Map<Elements, Integer> map = Battle.getDisposableRocks();
+		
+		if (Battle.areThereStillRocks()) {
+			for (int i = 0; i < MAX_ROCKS; i++) {
+				ElementRock rock = Utility.chooseRock();
+				if (map.get(rock.getType()) > 0) {
+					rocks.add(rock);
+					map.replace(rock.getType(), map.get(rock.getType()) - 1);
+				} else {
+					i--;
+					Utility.chooseAnotherRock();
+				}
+			} 
+		} else {
+			return;
+		}
+		
+		Battle.setDisposableRocks(map);
+	}
 
+	public int getLife() {
+		return this.life;
+	}
+
+	public void setLife(int life) {
+		
+		this.life = life;
+		if (life <= 0) {
+			dead = true;
+			this.life = 0;
+		}
+	}
+
+	public static int getMaxRocks() {
+		return MAX_ROCKS;
+	}
 	
+	public String getNameGolem() {
+		return nameGolem;
+	}
+
+
+	public void setNameGolem(String nameGolem) {
+		this.nameGolem = nameGolem;
+	}
 }

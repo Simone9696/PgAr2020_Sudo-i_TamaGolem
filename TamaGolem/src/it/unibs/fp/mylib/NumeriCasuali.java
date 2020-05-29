@@ -1,6 +1,5 @@
 package it.unibs.fp.mylib;
 
-
 import java.util.*;
 
 public class NumeriCasuali {

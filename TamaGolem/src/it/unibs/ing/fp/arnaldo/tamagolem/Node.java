@@ -1,4 +1,4 @@
-package prova;
+package it.unibs.ing.fp.arnaldo.tamagolem;
 
 public class Node {
 
