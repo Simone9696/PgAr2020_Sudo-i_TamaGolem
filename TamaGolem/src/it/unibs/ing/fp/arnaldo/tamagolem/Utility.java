@@ -147,28 +147,27 @@ public class Utility {
 		System.out.println(playerTwo.getName() + "\t-->\tVita TamaGolem: " + playerTwo.getMyGolem().getLife());
 	}
 	
-	
-	public static void printStatusP1(Player playerOne) {
+	/**
+	 * Prints the current status of a player
+	 * @param player the player
+	 */
+	public static void printStatus(Player player) {
 		
-		System.out.println(BelleStringhe.stampaStringaCorniceCentrato(playerOne.toString(),setVESSILLO(playerOne.getEnsign())));
-	}
-	public static void printStatusP2(Player playerTwo) {
-		
-		System.out.println(BelleStringhe.stampaStringaCorniceCentrato(playerTwo.toString(),setVESSILLO(playerTwo.getEnsign())));
+		System.out.println(BelleStringhe.stampaStringaCorniceCentrato(player.toString(), player.getEnsign()));
 	}
 	
+	/**
+	 * Prints a intro to the fight
+	 * @param playerOne the first player
+	 * @param playerTwo the second player
+	 */
 	public static void intoFight(Player playerOne, Player playerTwo) {
-		printStatusP1(playerOne);
-        printStatusP2(playerTwo);
-        System.out.println(String.format("%s %s HERE WE GO FIGHT STARTS" ,playerOne.getName(),playerTwo.getName()));
+		printStatus(playerOne);
+        printStatus(playerTwo);
+        System.out.println(String.format("%s %s HERE WE GO, FIGHT STARTS" ,playerOne.getName(),playerTwo.getName()));
         System.out.println();
         System.out.println(String.format("le pietre di  %s e quelle di %s si scontreranno " ,playerOne.getMyGolem().getNameGolem(),playerTwo.getMyGolem().getNameGolem()));
 	}
-	
-
-	
-
-	
 	
 	/**
 	 * Warns players that a Golem is dead
@@ -307,13 +306,10 @@ public class Utility {
 		System.out.println("Giocherete con 3 elementi");
 		
 	}
-	public static  char setVESSILLO(char vESSILLO) {
-		return VESSILLO = Player.getEnsign();
-	}
 
-	public static char getVESSILLO() {
-		return VESSILLO;
-	}
+	/**
+	 * Prints advise on revelation of equilibrium
+	 */
 	public static void revelation() {
 		System.out.println();
 		System.out.println("La partita è terminata. E' arrivato il momento di svelare\n"+

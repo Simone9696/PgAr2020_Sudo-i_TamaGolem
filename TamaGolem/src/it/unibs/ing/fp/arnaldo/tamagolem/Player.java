@@ -8,7 +8,7 @@ public class Player {
 	private boolean defeated = false;
 	private int evocatedGolems = 1;
 	private Golem myGolem;
-	private static char ensign;
+	private char ensign;
 	
 
 	public Player(String name, char ensign) {
@@ -77,7 +77,7 @@ public class Player {
 		return this.myGolem = myGolem;
 	}
 	
-	public static char getEnsign() {
+	public char getEnsign() {
 		return ensign;
 	}
 
