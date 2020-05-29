@@ -13,11 +13,7 @@ import it.unibs.fp.mylib.MyMenu;
 import util.mylib.diSG.BelleStringhe;
 
 public class Utility {
-
-	private static  char VESSILLO ;
-
-
-	public static final boolean elementForBeginner = false;
+	
 	
 	/**
 	 * Guides player in choosing a rock from the set of available rocks
@@ -152,8 +148,12 @@ public class Utility {
 	 * @param player the player
 	 */
 	public static void printStatus(Player player) {
-		
-		System.out.println(BelleStringhe.stampaStringaCorniceCentrato(player.toString(), player.getEnsign()));
+		StringBuffer str = new StringBuffer();
+		for (int i = 0; i < 50; i++) str.append(player.getEnsign());
+		String vessillo = str.toString();
+		System.out.println(vessillo);
+		System.out.println(player.toString());
+		System.out.println(vessillo);
 	}
 	
 	/**
@@ -233,7 +233,7 @@ public class Utility {
 
 		case 4:
 			System.out.println("ATTENZIONE ONLY MASTER");
-			System.out.println("numero troppo elevato di forze in gioco pericolo");
+			System.out.println("Numero molto elevato di forze in gioco, pericolo");
 			return Equilibrium.setN(10);
 
 		}

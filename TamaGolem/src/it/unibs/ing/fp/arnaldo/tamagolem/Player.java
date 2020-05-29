@@ -84,6 +84,7 @@ public class Player {
 	public void setEnsign(char ensign) {
 		this.ensign= ensign;
 	}
+	
 	public String toString() {
 		StringBuilder cadet = new StringBuilder();
 		cadet.append(String.format("username: ") + name + "\n");

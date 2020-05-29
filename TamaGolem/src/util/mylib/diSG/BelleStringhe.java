@@ -135,7 +135,7 @@ public class BelleStringhe {
 		return fine.toString();
 	}
 /**<b>*/
-	private static int lunghezzaMassimaString(String daStampare) {
+	public static int lunghezzaMassimaString(String daStampare) {
 		ArrayList<Integer> aCapo = new ArrayList<>();
 		int i = 0, j = 0;
 		while (i != -1) {
@@ -155,5 +155,18 @@ public class BelleStringhe {
 		}
 		return lunghezzaMassimaStri;
 
+	}
+	
+	public static int rigaPiuLunga(String str) {
+		int j = 0;
+		int i = 0;
+		while (i != -1) {
+			i = str.indexOf('\n', i + 1);
+			if (i - j >= j) {
+				j = i - j;
+			}
+		}
+		return j;
+		
 	}
 }
