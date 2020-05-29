@@ -14,7 +14,7 @@ public class UIO {
 	 */
 	public static void golemIntro() {
 		
-		int x = 0;
+		int x = 0;   
 		printWelcome();
 		
 		System.out.println("Come primo sfindante clandestino ti è concesso di scegliere il livello della sfida");
