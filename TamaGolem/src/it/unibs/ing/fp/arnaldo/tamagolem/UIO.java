@@ -44,6 +44,7 @@ public class UIO {
 		
 		printGoodbye();
 		if(Utility.newPlay())
+		System.out.println("ora che non sei piu' un novellino ");
 		do {
 			do {
 				

@@ -9,7 +9,7 @@ import it.unibs.ing.fp.arnaldo.tamagolem.Utility;
 public class BelleStringhe {
 
 	public static final char TRATTINO = '-';
-    public static final char VESSILLO = Utility.getVESSILLO();
+    public static final char VESSILLO = 0;
 	private final static String SPAZIO = " ";
 
 	public final static String ACAPO = System.lineSeparator();
