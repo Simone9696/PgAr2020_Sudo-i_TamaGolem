@@ -31,6 +31,15 @@ public class Golem {
 		MAX_ROCKS = (int) (Math.ceil((Equilibrium.getN() + 1) / 3.0) + 1);
 	}
 	
+	@Override
+	public String toString() {
+		return "Golem rocks=" + rocks ;
+	}
+
+	public ArrayList<ElementRock> getRocks() {
+		return rocks;
+	}
+
 	public boolean isDead() {
 		return dead;
 		

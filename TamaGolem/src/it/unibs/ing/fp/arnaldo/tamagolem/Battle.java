@@ -75,7 +75,10 @@ public class Battle {
 		Utility.introPlayer(); // fa impostare ai giocatori i loro nomi
 	
         Utility.introGolem(playerOne, playerTwo); // fa evocare ai giocatori i loro primi Golem
-
+         
+     
+       
+          Utility.intoFight(playerOne, playerTwo);
 		while (!playerOne.isDefeated() && !playerTwo.isDefeated()) { // finché sono entrambi in vita
 			
 			if (golemOne.rocks.equals(golemTwo.rocks)) { 	// se hanno lanciato le stesse rocce nello stesso ordine 

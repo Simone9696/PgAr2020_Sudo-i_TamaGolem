@@ -2,6 +2,9 @@ package util.mylib.diSG;
 
 import java.util.ArrayList;
 
+import it.unibs.ing.fp.arnaldo.tamagolem.Player;
+import it.unibs.ing.fp.arnaldo.tamagolem.Utility;
+
 /** Classe che fa delle indentazioni alle stringhe in console 
  * @author Simone Giocomini*/
 public class BelleStringhe {
@@ -11,14 +14,17 @@ public class BelleStringhe {
 	private final static String SPAZIO = " ";
 
 	public final static String ACAPO = System.lineSeparator();
-
+	public static char VESSILLO = Player.getEnsign();
 	public final static char GRADO = '\u00b0';
 	public final static char PUNTO = '§';
+    
+	
 
 	public static String incorniciaCentrato(String s, int lunghezzaCornice) {
 		StringBuilder res = new StringBuilder();
+		char VESSILLO = Player.getEnsign();
 		String sCentrato = BelleStringhe.centrata(s, lunghezzaCornice);
-		String cornice = BelleStringhe.stampaCornice(lunghezzaCornice, TRATTINO);
+		String cornice = BelleStringhe.stampaCornice(lunghezzaCornice,VESSILLO);
 		res.append(cornice);
 		res.append(ACAPO);
 		res.append(sCentrato);

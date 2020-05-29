@@ -1,12 +1,21 @@
 package it.unibs.ing.fp.arnaldo.tamagolem;
 
 
+
+
 import it.unibs.fp.mylib.EstrazioniCasuali;
 import it.unibs.fp.mylib.InputDati;
 import it.unibs.fp.mylib.MyMenu;
+
+/**
+ * libreria di @author Giacomini Simone
+ */
 import util.mylib.diSG.BelleStringhe;
 
 public class Utility {
+
+	private static  char VESSILLO ;
+
 
 	public static final boolean elementForBeginner = false;
 	
@@ -137,7 +146,30 @@ public class Utility {
 		System.out.println(playerOne.getName() + "\t-->\tVita TamaGolem: " + playerOne.getMyGolem().getLife());
 		System.out.println(playerTwo.getName() + "\t-->\tVita TamaGolem: " + playerTwo.getMyGolem().getLife());
 	}
+	
+	
+	public static void printStatusP1(Player playerOne) {
+		
+		System.out.println(BelleStringhe.stampaStringaCorniceCentrato(playerOne.toString(),setVESSILLO(playerOne.getEnsign())));
+	}
+	public static void printStatusP2(Player playerTwo) {
+		
+		System.out.println(BelleStringhe.stampaStringaCorniceCentrato(playerTwo.toString(),setVESSILLO(playerTwo.getEnsign())));
+	}
+	
+	public static void intoFight(Player playerOne, Player playerTwo) {
+		printStatusP1(playerOne);
+        printStatusP2(playerTwo);
+        System.out.println(String.format("%s %s HERE WE GO FIGHT STARTS" ,playerOne.getName(),playerTwo.getName()));
+        System.out.println();
+        System.out.println(String.format("le pietre di  %s e quelle di %s si scontreranno " ,playerOne.getMyGolem().getNameGolem(),playerTwo.getMyGolem().getNameGolem()));
+	}
+	
 
+	
+
+	
+	
 	/**
 	 * Warns players that a Golem is dead
 	 * @param player the player whose Golem is dead
@@ -172,7 +204,7 @@ public class Utility {
 	 */
 	public static void push() {
 		System.out.println();
-		util.mylib.diSG.InputDati.isInvioPremuto("", "Premi un tasto per lanciare la prossima roccia\n");
+		util.mylib.diSG.InputDati.isInvioPremuto("", "Premi un tasto per lanciare la roccia\n");
 		
 	}
 	
@@ -227,11 +259,11 @@ public class Utility {
 		
 		System.out.println("Sarete due sfidanti e ... non sarete soli");
 		System.out.println("Finalemnte testerete le abilità dei vostri TAMAGOLEM !!! ");    		
-		System.out.println("Adesso le presentazioni:");
+		System.out.println("registrazione alla sida :");
 		
 		
 		Battle.setPlayerOne(Utility.registerPlayer());
-		System.out.println("Bene allievo adesso tocca al tuo sifdante:");
+		System.out.println("Bene allievo temerario, ora il tuo sfidante sara'  :");
 		Battle.setPlayerTwo(Utility.registerPlayer());
 	}
     
@@ -242,7 +274,7 @@ public class Utility {
 	public static Golem firstEvoGolem() {
 		
 		Golem golem = new Golem();
-    	String nameGolem = InputDati.leggiStringaNonVuota("Nome del TAMAGOLEM :"); 
+    	String nameGolem = InputDati.leggiStringaNonVuota("schieri il tamgolem chiamato :"); 
     	golem.setNameGolem(nameGolem);
         golem.addRocks();
 	
@@ -256,12 +288,12 @@ public class Utility {
 	 */
 	public static void introGolem(Player playerOne, Player playerTwo) {
 		
-		System.out.println("Evocate le votre creature");
+		System.out.println("EVOCATE le vostre creature");
 		System.out.println("Dategli in pasto le pietre degli elementi ");
 		turn(playerOne);
 	    Battle.setGolemOne(Utility.firstEvoGolem());
 	    playerOne.setMyGolem(Battle.getGolemOne());
-		System.out.println("Bene allievo adesso tocca al tuo sifdante:");
+		System.out.println(" passo allo sfidante :");
 		Battle.setGolemtwo(Utility.firstEvoGolem());
 		playerTwo.setMyGolem(Battle.getGolemTwo());
 		
@@ -274,6 +306,13 @@ public class Utility {
 		System.out.println();
 		System.out.println("Giocherete con 3 elementi");
 		
+	}
+	public static  char setVESSILLO(char vESSILLO) {
+		return VESSILLO = Player.getEnsign();
+	}
+
+	public static char getVESSILLO() {
+		return VESSILLO;
 	}
 
 }

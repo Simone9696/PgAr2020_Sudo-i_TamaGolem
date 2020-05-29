@@ -8,7 +8,7 @@ public class Player {
 	private boolean defeated = false;
 	private int evocatedGolems = 1;
 	private Golem myGolem;
-	private char ensign;
+	private static char ensign;
 	
 
 	public Player(String name, char ensign) {
@@ -61,11 +61,9 @@ public class Player {
 		
 	}
 
-	@Override
-	public String toString() {
-		return "Player [name=" + name + ", defeated=" + defeated + ", evocatedGolems=" + evocatedGolems + ", myGolem="
-				+ myGolem + ", ensign=" + ensign + "]";
-	}
+
+	
+	
 
 	public static int getMaxGolems() {
 		return MAX_GOLEMS;
@@ -79,8 +77,23 @@ public class Player {
 		return this.myGolem = myGolem;
 	}
 	
+	public static char getEnsign() {
+		return ensign;
+	}
+
 	public void setEnsign(char ensign) {
 		this.ensign= ensign;
 	}
-	
+	public String toString() {
+		StringBuilder cadet = new StringBuilder();
+		cadet.append(String.format("username: ") + name + "\n");
+		cadet.append(String.format("golem schierato: ") + myGolem.getNameGolem() + "\n");
+		cadet.append("energie:\n");
+		for (int i = 0; i < myGolem.rocks.size(); i++) {
+			cadet.append(String.format(" ") + myGolem.rocks.get(i).toString() + " ");
+		}
+		cadet.append("\npunti vita golem :" + myGolem.getLife());
+		return cadet.toString();
 }
+	
+	}
