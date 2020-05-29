@@ -10,7 +10,7 @@ public class Battle {
 	
 	private static int P = 0;
 	
-	private static Map<Elements, Integer> disposableRocks = new TreeMap<Elements, Integer>();
+	private static Map<Elements, Integer> disposableRocks;
 	
 	private static Golem golemOne;
 	private static Golem golemTwo;
@@ -21,17 +21,18 @@ public class Battle {
 	public static void initializeRockStock() {
 		P = (int) (Math.ceil((double) 2*Player.getMaxGolems()*Golem.getMaxRocks()/Equilibrium.getN()) * Equilibrium.getN());
 	}
-	
 	/**
 	 * Initializes the common rock stock
 	 */
-	private static void setDisposableRocks() {
+	private static Map<Elements, Integer> setDisposableRocks() {
+		Map<Elements, Integer> dispRocks = new TreeMap<Elements, Integer>();
 		int rockNumberEachType = P / Equilibrium.getN();
 		for (Elements elem : Elements.values()) {
 			if (elem.getId() < Equilibrium.getN()) {
-				disposableRocks.put(elem, rockNumberEachType);
+				dispRocks.put(elem, rockNumberEachType);
 			}
 		}
+		return dispRocks;
 	}
 	
 	/**
@@ -70,7 +71,7 @@ public class Battle {
 		
 		Utility.battleIntro(); // stampa intro alla battaglia
 		
-		setDisposableRocks(); // riempie la scorta comune di rocce
+		disposableRocks = setDisposableRocks(); // riempie la scorta comune di rocce
 		
 		while (!Equilibrium.newEquilibrium()); // genera un nuovo equilibrio7
 		
@@ -80,14 +81,14 @@ public class Battle {
 	
         Utility.introGolem(playerOne, playerTwo); // fa evocare ai giocatori i loro primi Golem
         Utility.intoFight(playerOne, playerTwo);
-		while (!playerOne.isDefeated() && !playerTwo.isDefeated()) { // finché sono entrambi in vita
+		while (!playerOne.isDefeated() && !playerTwo.isDefeated()) { // finchï¿½ sono entrambi in vita
 			
 			if (golemOne.rocks.toString().equals((golemTwo.rocks).toString())) { 	// se hanno lanciato le stesse rocce nello stesso ordine 
 				Utility.tie();								// finisce in pareggio
 				return;
 			}
 			
-			while (!golemOne.isDead() && !golemTwo.isDead()) { // finché entrambi i Golem sono vivi
+			while (!golemOne.isDead() && !golemTwo.isDead()) { // finchï¿½ entrambi i Golem sono vivi
 
 				Utility.push(); // aspetta che si prema invio
 				ElementRock rockOne = golemOne.throwRock(playerOne); // lancia le due rocce
@@ -98,9 +99,9 @@ public class Battle {
 				} else {
 					golemTwo.setLife(golemTwo.getLife() - result);
 				}
-				if (golemOne.getLife() != 0 && golemTwo.getLife() != 0) { // se non è morto stampa il danno
+				if (golemOne.getLife() != 0 && golemTwo.getLife() != 0) { // se non ï¿½ morto stampa il danno
 					Utility.printDemage(result, rockOne, rockTwo);
-				} else if (golemOne.getLife() == 0) Utility.golemDead(playerOne); // altrimenti stampa chi è morto
+				} else if (golemOne.getLife() == 0) Utility.golemDead(playerOne); // altrimenti stampa chi ï¿½ morto
 				else Utility.golemDead(playerTwo);
 				
 				Utility.printStatus(playerOne, playerTwo); // stampa lo stato attuale dei Golem e dei giocatori
